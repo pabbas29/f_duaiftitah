@@ -6,11 +6,6 @@ class DuaCard extends StatefulWidget {
 }
 
 class _DuaCardState extends State<DuaCard> {
-
-  List<String> ayats = [
-    'Bismillahirahma nirrahim',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -20,7 +15,7 @@ class _DuaCardState extends State<DuaCard> {
           width: 400,
           height: 300,
           child: Padding(
-            padding: EdgeInsets.fromLTRB(10, 20, 10, 20),
+            padding: EdgeInsets.fromLTRB(10, 40, 10, 20),
               child: Column(
                 children: <Widget>[
                   Text(
