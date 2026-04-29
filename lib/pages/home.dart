@@ -1,5 +1,4 @@
 import 'package:dua_iftitah/components/DuaCarousel.dart';
-import 'package:dua_iftitah/components/duacard.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
