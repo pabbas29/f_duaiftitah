@@ -1,6 +1,7 @@
-import 'package:dua_iftitah/pages/home.dart';
+import 'package:dua_iftitah/pages/cover_page.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(
-  home: HomePage(),
+  debugShowCheckedModeBanner: false,
+  home: CoverPage(),
 ));

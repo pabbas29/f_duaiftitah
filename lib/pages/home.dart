@@ -6,15 +6,19 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.orange[300],
-      body: SafeArea(
-        child: Stack(
-          children: <Widget>[
-            Image.asset('assets/background.jpg'),
-            Center(
+      body: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          Image.asset(
+            'assets/background.jpg',
+            fit: BoxFit.cover,
+          ),
+          SafeArea(
+            child: Center(
               child: DuaCarousel(),
-            )
-          ]
-        )
+            ),
+          )
+        ]
       )
     );
   }
