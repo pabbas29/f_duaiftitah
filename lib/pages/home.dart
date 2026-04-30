@@ -1,7 +1,20 @@
 import 'package:dua_iftitah/components/DuaCarousel.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String _selectedLanguage = 'id';
+
+  void _onLanguageChanged(String langCode) {
+    setState(() {
+      _selectedLanguage = langCode;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +39,10 @@ class HomePage extends StatelessWidget {
           ),
           SafeArea(
             child: Center(
-              child: DuaCarousel(),
+              child: DuaCarousel(
+                selectedLanguage: _selectedLanguage,
+                onLanguageChanged: _onLanguageChanged,
+              ),
             ),
           )
         ]

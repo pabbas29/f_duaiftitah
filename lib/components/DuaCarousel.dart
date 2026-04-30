@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 import '../models/dua_verse.dart';
 
 class DuaCarousel extends StatefulWidget {
+  final String selectedLanguage;
+  final Function(String) onLanguageChanged;
+
+  DuaCarousel({
+    required this.selectedLanguage,
+    required this.onLanguageChanged,
+  });
+
   @override
   _DuaCarouselState createState() => _DuaCarouselState();
 }
@@ -46,6 +54,7 @@ class _DuaCarouselState extends State<DuaCarousel> {
           ),
           SizedBox(height: 20),
           _buildPageIndicator(verses.length),
+          _buildLanguageSelector(),
         ],
       ),
     );
@@ -98,7 +107,7 @@ class _DuaCarouselState extends State<DuaCarousel> {
               Divider(color: Colors.orange[300]),
               SizedBox(height: 10),
               Text(
-                verse.translation,
+                verse.getTranslation(widget.selectedLanguage),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 16,
@@ -119,6 +128,43 @@ class _DuaCarouselState extends State<DuaCarousel> {
       children: List.generate(
         pageCount,
         (index) => _buildDot(index),
+      ),
+    );
+  }
+
+  Widget _buildLanguageSelector() {
+    return Container(
+      margin: EdgeInsets.only(top: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: DuaIftitahData.supportedLanguages.entries.map((entry) {
+          final langCode = entry.key;
+          final label = entry.value;
+          final isSelected = widget.selectedLanguage == langCode;
+          return GestureDetector(
+            onTap: () => widget.onLanguageChanged(langCode),
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 8),
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              decoration: BoxDecoration(
+                color: isSelected ? Colors.orange[800] : Colors.white.withOpacity(0.7),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: isSelected ? Colors.orange[800]! : Colors.orange[300]!,
+                  width: 2,
+                ),
+              ),
+              child: Text(
+                label,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: isSelected ? Colors.white : Colors.orange[800],
+                ),
+              ),
+            ),
+          );
+        }).toList(),
       ),
     );
   }
