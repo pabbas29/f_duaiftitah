@@ -1,4 +1,4 @@
-package [YOUR_PACKAGE_NAME] // Keep your original package name here!
+package net.syiar.duaiftitah
 
 import io.flutter.embedding.android.FlutterActivity
 

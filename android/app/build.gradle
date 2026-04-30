@@ -1,6 +1,7 @@
 plugins {
     id "com.android.application"
     id "dev.flutter.flutter-gradle-plugin"
+    id "org.jetbrains.kotlin.android"
 }
 
 def localProperties = new Properties()
@@ -29,6 +30,15 @@ if (flutterVersionName == null) {
 android {
     namespace = "net.syiar.duaiftitah"
     compileSdkVersion 34
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -62,7 +72,6 @@ flutter {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
